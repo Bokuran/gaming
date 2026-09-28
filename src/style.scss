@@ -242,6 +242,7 @@ body {
 
     &__content-img {
         border-radius: 20px;
+        max-width: 100%;
     }
 
     &__button {
@@ -271,6 +272,12 @@ body {
         border-radius: 15px;
         padding: 40px 55px;
         background-color: #1C140F;
+
+        @include respond-to('large') {
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
     }
 
     &__form-left {
@@ -296,6 +303,10 @@ body {
         background-color: $color-white;
         border-radius: 8px;
         padding: 6px;
+
+        @include respond-to('large') {
+            max-width: 550px;
+        }
     }
 
     &__form-input {
