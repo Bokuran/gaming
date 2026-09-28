@@ -1,5 +1,8 @@
-@use 'variables' as*;
-@use 'breakpoints' as *;
+// src/abstracts/_mixins.scss
+
+@use 'sass:map'; // 1. Подключаем встроенный модуль Sass
+@use 'breakpoints' as *; // Ваш файл с брейкпоинтами
+@use 'variables' as *; // Ваш файл с переменными (если он тут нужен)
 
 @mixin button__hover-nav {
     position: relative;
@@ -41,7 +44,8 @@
 }
 
 @mixin respond-to($breakpoint) {
-    $value: map-get($breakpoints, $breakpoint);
+    // 2. Используем новый синтаксис map.get
+    $value: map.get($breakpoints, $breakpoint);
 
     @if $value {
         @media (max-width: $value) {
