@@ -55,6 +55,11 @@ body {
         gap: 47px;
         justify-content: space-between;
         flex-wrap: wrap;
+
+        @include respond-to('large') {
+            gap: 20px;
+            justify-content: center;
+        }
     }
 
     &__item {
@@ -160,6 +165,11 @@ body {
         align-items: flex-start;
         gap: 100px;
         flex-wrap: wrap;
+
+        @include respond-to('large') {
+            gap: 50px;
+            justify-content: center;
+        }
     }
 
     &__item {
@@ -280,6 +290,7 @@ body {
     &__form-right {
         display: flex;
         align-items: center;
+        min-width: 0;
         max-width: 385px;
         width: 100%;
         background-color: $color-white;
@@ -289,6 +300,7 @@ body {
 
     &__form-input {
         flex: 1;
+        min-width: 0;
         border: none;
         outline: none;
         padding: 0 20px;

@@ -12,6 +12,10 @@
 
     &__info {
         max-width: 352px;
+
+        @include respond-to('large') {
+            max-width: 200px;
+        }
     }
 
     &__info-logo {
@@ -26,6 +30,10 @@
     &__wrapper {
         display: flex;
         gap: 143px;
+
+        @include respond-to('large') {
+            gap: 50px;
+        }
     }
 
     &__list {
@@ -66,6 +74,10 @@
         img {
             position: relative;
             z-index: 1;
+        }
+
+        @include respond-to('large') {
+            flex-direction: column;
         }
     }
 
