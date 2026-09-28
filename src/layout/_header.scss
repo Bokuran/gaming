@@ -1,0 +1,213 @@
+@use '../abstracts' as *;
+
+.header {
+    overflow: hidden;
+    padding-top: 44px;
+    padding-bottom: 178px;
+
+    @include respond-to('medium') {
+        padding-bottom: 100px;
+    }
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 117px;
+
+        @include respond-to('medium') {
+            margin-bottom: 50px;
+        }
+    }
+
+    &__logo {
+        text-transform: uppercase;
+        font-size: 29px;
+        font-weight: 800;
+    }
+
+    &__button {
+        font-size: 13px;
+        background-color: #FA9021;
+        padding: 15px 30px;
+        border-radius: 6px;
+        transition: all .5s ease-in-out;
+
+        &:hover {
+            background-color: #774107;
+        }
+    }
+
+    &__content {
+        position: relative;
+
+        @include respond-to('medium') {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+    }
+
+    &__info {
+        max-width: 530px;
+
+        @include respond-to('xlarge') {
+            max-width: 450px;
+        }
+
+        @include respond-to('large') {
+            max-width: 330px;
+        }
+
+    }
+
+    &__info-subtitle {
+        font-size: 20px;
+        font-weight: 700;
+        color: #E87D0E;
+        margin-bottom: 17px;
+    }
+
+    &__info-title {
+        font-size: 50px;
+        font-weight: 700;
+        margin-bottom: 26px;
+
+        @include respond-to('xlarge') {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        @include respond-to('medium') {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+    }
+
+    &__info-text {
+        font-weight: 500;
+        margin-bottom: 50px;
+        line-height: 2;
+    }
+
+    &__info-button {
+        padding: 15px 30px;
+        border-radius: 40px;
+        background: linear-gradient(180deg, rgba(250, 131, 5, 1) 100%, rgba(251, 158, 60, 1) 100%);
+    }
+
+    &__img {
+        position: absolute;
+        top: -210px;
+        right: 0;
+        transform: translateX(50px);
+        max-width: 806px;
+        width: 100%;
+        z-index: 1;
+        height: auto;
+        display: block;
+
+        @include respond-to('xlarge') {
+            max-width: 600px;
+        }
+
+        @include respond-to('large') {
+            max-width: 500px;
+            right: 0;
+            top: -25%;
+        }
+
+        @include respond-to('medium') {
+            max-width: 350px;
+        }
+
+        @include respond-to('medium') {
+            display: none;
+        }
+    }
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    position: relative;
+    z-index: 2;
+    justify-self: start;
+
+    &__btn {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 24px;
+        position: relative;
+        z-index: 11;
+
+        @include respond-to('medium') {
+            display: flex;
+            order: 1;
+        }
+
+        span {
+            height: 2px;
+            background-color: $color-white;
+            width: 100%;
+        }
+
+        &::after {
+            top: 0;
+        }
+
+        &::before {
+            bottom: 0;
+        }
+
+        &::after,
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: $color-white;
+        }
+    }
+
+
+    &__list {
+        display: flex;
+        gap: 88px;
+
+        &.open {
+            transform: translate(0);
+        }
+
+
+        @include respond-to('large') {
+            gap: 40px;
+        }
+
+        @include respond-to('medium') {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 10;
+            background-color: #171717;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+
+            &.open {
+                transform: translateX(0);
+            }
+        }
+    }
+
+    &__item {
+        @include button__hover-nav;
+    }
+}
