@@ -8,6 +8,13 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 53px;
+
+        @include respond-to('medium') {
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
     }
 
     &__info {
@@ -25,6 +32,16 @@
 
     &__info-text {
         margin-bottom: 25px;
+
+        @include respond-to('medium') {
+            display: none;
+        }
+    }
+
+    &__info-dog {
+        @include respond-to('medium') {
+            display: none;
+        }
     }
 
     &__wrapper {
@@ -78,6 +95,10 @@
 
         @include respond-to('large') {
             flex-direction: column;
+        }
+
+        @include respond-to('medium') {
+            flex-direction: row;
         }
     }
 
