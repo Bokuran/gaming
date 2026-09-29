@@ -4,9 +4,13 @@
 // layout
 @use 'layout/footer';
 @use 'layout/header';
+@use 'layout/slider';
 
 // base
 @use 'base/reset';
+
+// pages
+@use 'pages/about';
 
 body {
     font-family: "Poppins", sans-serif;

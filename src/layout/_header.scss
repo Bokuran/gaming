@@ -3,20 +3,10 @@
 .header {
     overflow: hidden;
     padding-top: 44px;
-    padding-bottom: 178px;
-
-    @include respond-to('medium') {
-        padding-bottom: 100px;
-    }
 
     &__top {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 117px;
-
-        @include respond-to('medium') {
-            margin-bottom: 50px;
-        }
     }
 
     &__logo {
@@ -39,8 +29,10 @@
 
     &__content {
         position: relative;
+        padding: 117px 0 193px 0;
 
         @include respond-to('medium') {
+            padding: 117px 0 100px 0;
             display: flex;
             justify-content: center;
             text-align: center;
@@ -97,7 +89,7 @@
 
     &__img {
         position: absolute;
-        top: -210px;
+        top: -95px;
         right: 0;
         transform: translateX(50px);
         max-width: 806px;
@@ -113,7 +105,7 @@
         @include respond-to('large') {
             max-width: 500px;
             right: 0;
-            top: -25%;
+            top: 0;
         }
 
         @include respond-to('medium') {
