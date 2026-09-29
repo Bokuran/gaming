@@ -7,6 +7,10 @@
     max-height: 656px; // Фиксированная высота для примера
     overflow: hidden; // Чтобы картинки не вылезали за скругления
 
+    @include respond-to('medium') {
+        height: 600px;
+    }
+
     &__images {
         position: relative;
         width: 100%;
