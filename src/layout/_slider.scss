@@ -4,11 +4,19 @@
     position: relative;
     width: 100%;
     max-width: 739px; // Задайте нужный размер
-    max-height: 656px; // Фиксированная высота для примера
+    height: 656px; // Фиксированная высота для примера
     overflow: hidden; // Чтобы картинки не вылезали за скругления
 
+    @include respond-to('xlarge') {
+        height: 500px;
+    }
+
+    @include respond-to('large') {
+        height: 450px;
+    }
+
     @include respond-to('medium') {
-        height: 600px;
+        height: 400px;
     }
 
     &__images {
