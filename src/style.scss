@@ -33,6 +33,10 @@ body {
 
 .active {
     @include button__hover-nav;
+
+    a {
+        cursor: default;
+    }
 }
 
 .trending {
