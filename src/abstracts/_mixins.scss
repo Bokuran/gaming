@@ -41,6 +41,48 @@
     background-color: rgba(255, 255, 255, .11);
 }
 
+@mixin breadcrumbs {
+    margin-bottom: 25px;
+
+    &__list {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        color: $color-white;
+
+        &:not(:last-child)::after {
+            content: '>';
+            margin-left: 10px;
+            color: $color-white;
+            font-size: 12px;
+        }
+
+        &--active {
+            color: #E47500;
+            cursor: default;
+        }
+    }
+
+    &__link {
+        color: inherit;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: #E47500;
+        }
+    }
+}
+
 @mixin respond-to($breakpoint) {
     $value: map.get($breakpoints, $breakpoint);
 

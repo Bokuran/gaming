@@ -47,3 +47,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+const preview = document.getElementById('videoPreview');
+const modal = document.getElementById('videoModal');
+const container = document.getElementById('videoContainer');
+
+preview.addEventListener('click', () => {
+    // Вставляем iframe только в момент клика (ленивая загрузка)
+    container.innerHTML = `
+    <iframe 
+      width="100%" 
+      height="100%" 
+      src="https://www.youtube.com/embed/watch?v=m_nlLmWRj_k&list=RDm_nlLmWRj_k&start_radio=1?autoplay=1" 
+      frameborder="0" 
+      allow="autoplay; encrypted-media" 
+      allowfullscreen>
+    </iframe>`;
+    modal.classList.add('is-open');
+    document.body.classList.add('no-scroll');
+});
+
+// Закрытие модалки
+modal.addEventListener('click', (e) => {
+    if (e.target.closest('.video-modal__close') || e.target.classList.contains('video-modal__overlay')) {
+        modal.classList.remove('is-open');
+        container.innerHTML = ''; // Очищаем iframe, чтобы видео остановилось
+        document.body.classList.remove('no-scroll');
+    }
+});

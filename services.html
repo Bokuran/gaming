@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About us</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="container">
+      <div class="header__top">
+        <a class="header__logo" href="./index.html">logo</a>
+        <nav class="menu">
+          <button class="menu__btn">
+            <span></span>
+          </button>
+          <ul class="menu__list">
+            <li class="menu__item">
+              <a class="menu__link" href="./index.html">Home</a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link" href="./about.html">About us</a>
+            </li>
+            <li class="menu__item active">
+              <a class="menu__link" href="./services.html">Services</a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link" href="#">News</a>
+            </li>
+          </ul>
+          <a class="header__button">Contact us</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="services">
+    <div class="container">
+      <nav class="breadcrumbs services__breadcrumbs">
+        <ul class="breadcrumbs__list">
+          <li class="breadcrumbs__item">
+            <a href="./index.html" class="breadcrumbs__link">Home</a>
+          </li>
+          <li class="breadcrumbs__item breadcrumbs__item--active">Services</li>
+        </ul>
+      </nav>
+      <div class="services__top">
+        <h1 class="services__top-title">Lorem Ipsum is simply dummy text of the printing and.</h1>
+        <p class="services__top-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+      </div>
+      <div class="services__items">
+        <div class="services__item">
+          <div class="services__item-wrapper">
+            <img src="/src/img/services-1.svg" alt="">
+          </div>
+          <div class="services__item-num">90+</div>
+          <div class="services__item-text">Clients</div>
+        </div>
+        <div class="services__item">
+          <div class="services__item-wrapper">
+            <img src="/src/img/services-2.svg" alt="">
+          </div>
+          <div class="services__item-num">30+</div>
+          <div class="services__item-text">Countries</div>
+        </div>
+        <div class="services__item">
+          <div class="services__item-wrapper">
+            <img src="/src/img/services-3.svg" alt="">
+          </div>
+          <div class="services__item-num">50+</div>
+          <div class="services__item-text">Projects</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="video">
+    <div class="container">
+      <div class="video__inner">
+        <div class="video-preview" id="videoPreview">
+          <img src="/src/img/video-bg.jpg" alt="Превью видео" class="video-preview__img">
+          <button class="video-preview__btn" aria-label="Воспроизвести видео">
+            <img src="/src/img/play.svg" alt="">
+          </button>
+        </div>
+        <div class="video-modal" id="videoModal">
+          <div class="video-modal__overlay"></div>
+          <div class="video-modal__content">
+            <button class="video-modal__close" aria-label="Закрыть"><svg width="48" height="48" viewBox="0 0 16 16"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M4.11 2.697L2.698 4.11 6.586 8l-3.89 3.89 1.415 1.413L8 9.414l3.89 3.89 1.413-1.415L9.414 8l3.89-3.89-1.415-1.413L8 6.586l-3.89-3.89z"
+                  fill="#FFFFFF"></path>
+              </svg></button>
+            <div class="video-modal__iframe-container" id="videoContainer"></div>
+          </div>
+        </div>
+        <div class="video__info">
+          <div class="video__info-title">Lorem Ipsum is simply dummy text.</div>
+          <div class="video__info-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem
+            Ipsum is simply dummy .</div>
+          <div class="video__info-items">
+            <div class="video__info-item"><img src="/src/img/check.svg" alt=""> Lorem Ipsum is simply</div>
+            <div class="video__info-item"><img src="/src/img/check.svg" alt=""> Lorem Ipsum is simply</div>
+            <div class="video__info-item"><img src="/src/img/check.svg" alt=""> Lorem Ipsum is simply</div>
+            <div class="video__info-item"><img src="/src/img/check.svg" alt=""> Lorem Ipsum is simply</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subscribe">
+    <div class="container">
+      <div class="subscribe__title">Lorem Ipsum</div>
+      <div class="subscribe__text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      </div>
+      <div class="subscribe__form">
+        <div class="subscribe__form-left">
+          <div class="subscribe__form-title">Stay in the loop</div>
+          <div class="subscribe__form-text">Subscribe to receive the latest news and updates about TDA.
+            We promise not to spam you!</div>
+        </div>
+        <div class="subscribe__form-right">
+          <input class="subscribe__form-input" type="email" placeholder="Enter email address">
+          <button class="subscribe__form-button" type="submit">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__info">
+          <a class="footer__info-logo header__logo" href="./index.html">LOGO</a>
+          <div class="footer__info-text">Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry.
+          </div>
+          <div class="footer__info-dog">@Logo</div>
+        </div>
+        <div class="footer__wrapper">
+          <ul class="footer__list">
+            <h1 class="footer__list-title">About us</h1>
+            <li class="foooter__list-item">
+              <a class="footer__list-link" href="#">Zeux</a>
+            </li>
+            <li class="foooter__list-item">
+              <a class="footer__list-link" href="#">Portfolio</a>
+            </li>
+            <li class="foooter__list-item">
+              <a class="footer__list-link" href="#">Careers</a>
+            </li>
+            <li class="foooter__list-item">
+              <a class="footer__list-link" href="#">Contact us</a>
+            </li>
+          </ul>
+          <div class="footer__contact">
+            <h1 class="footer__contact-title">Contact us</h1>
+            <div class="footer__contact-text">Lorem Ipsum is simply dummy text of the printing and
+              typesetting industry.
+            </div>
+            <a class="footer__contacts-phone" href="tel:+90889097890">+908 89097 890</a>
+          </div>
+        </div>
+        <div class="footer__social">
+          <a class="footer__social-link" href="#">
+            <div class="footer__social-wrapper">
+              <img src="/src/img/facebook.svg" alt="">
+            </div>
+          </a>
+          <a class="footer__social-link" href="#">
+            <div class="footer__social-wrapper">
+              <img src="/src/img/instagram.svg" alt="">
+            </div>
+          </a>
+          <a class="footer__social-link" href="#">
+            <div class="footer__social-wrapper">
+              <img src="/src/img/twitter.svg" alt="">
+            </div>
+          </a>
+          <a class="footer__social-link" href="#">
+            <div class="footer__social-wrapper">
+              <img src="/src/img/linkedin.svg" alt="">
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__copy">Copyright ® 2021 Lorem All rights Rcerved</div>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

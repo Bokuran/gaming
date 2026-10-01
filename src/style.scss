@@ -11,6 +11,7 @@
 
 // pages
 @use 'pages/about';
+@use'pages/services';
 
 body {
     font-family: "Poppins", sans-serif;
@@ -20,6 +21,10 @@ body {
     color: $color-white;
     background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(26, 14, 1, 1) 100%);
 
+    &.no-scroll {
+        overflow: hidden;
+    }
+    
     @include respond-to('large') {
         line-height: 1.2;
     }
