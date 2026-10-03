@@ -297,6 +297,7 @@
 
 .swiper {
     padding: 83px 0 65px 0;
+    margin-bottom: 122px;
     background-color: #1C140F;
 
     &__top {
@@ -380,8 +381,8 @@
         align-items: center;
         gap: 20px;
 
-        @include respond-to('large') {
-            padding-right: 50px;
+        @include respond-to('medium') {
+            padding-right: 10px;
         }
     }
 
