@@ -1,41 +1,101 @@
 import './style.scss'
 
-/* ---------- Меню ---------- */
+/* ---------- Активное меню (автоматически) ---------- */
+document.addEventListener('DOMContentLoaded', () => {
+    const menuLinks = document.querySelectorAll('.menu__link');
+    // Получаем имя текущего файла (например, "about.html")
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+    menuLinks.forEach(link => {
+        // Получаем имя файла из href ссылки (например, "about.html")
+        const linkPage = link.getAttribute('href').split('/').pop();
+
+        // Если совпадает — подсвечиваем родителя <li>
+        if (linkPage === currentPage) {
+            link.closest('.menu__item')?.classList.add('active');
+        } else {
+            link.closest('.menu__item')?.classList.remove('active');
+        }
+    });
+});
+
+/* ---------- Меню (бургер) ---------- */
 const menuBtn = document.querySelector('.menu__btn');
 const menu = document.querySelector('.menu__list');
 
-menuBtn.addEventListener('click', () => {
-    menu.classList.toggle('open');
-});
+if (menuBtn && menu) {
+    menuBtn.addEventListener('click', () => {
+        menu.classList.toggle('open');
+    });
+}
 
 /* ---------- Видео-модалка ---------- */
 const preview = document.getElementById('videoPreview');
 const modal = document.getElementById('videoModal');
 const container = document.getElementById('videoContainer');
 
-preview.addEventListener('click', () => {
-    container.innerHTML = `
-    <iframe 
-      width="100%" 
-      height="100%" 
-      src="https://www.youtube.com/embed/m_nlLmWRj_k?autoplay=1" 
-      frameborder="0" 
-      allow="autoplay; encrypted-media" 
-      allowfullscreen>
-    </iframe>`;
-    modal.classList.add('is-open');
-    document.body.classList.add('no-scroll');
+if (preview && modal && container) {
+    preview.addEventListener('click', () => {
+        container.innerHTML = `
+        <iframe 
+          width="100%" 
+          height="100%" 
+          src="https://www.youtube.com/embed/m_nlLmWRj_k?autoplay=1" 
+          frameborder="0" 
+          allow="autoplay; encrypted-media" 
+          allowfullscreen>
+        </iframe>`;
+        modal.classList.add('is-open');
+        document.body.classList.add('no-scroll');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target.closest('.video-modal__close') || e.target.classList.contains('video-modal__overlay')) {
+            modal.classList.remove('is-open');
+            container.innerHTML = '';
+            document.body.classList.remove('no-scroll');
+        }
+    });
+}
+
+/* ---------- Простой слайдер (About us) ---------- */
+document.addEventListener('DOMContentLoaded', () => {
+    const sliders = document.querySelectorAll('.slider');
+
+    sliders.forEach(slider => {
+        const images = slider.querySelectorAll('.slider__img');
+        const prevBtn = slider.querySelector('.slider__btn--prev');
+        const nextBtn = slider.querySelector('.slider__btn--next');
+        const counter = slider.querySelector('.slider__counter');
+
+        // Защита: если элементов нет — пропускаем
+        if (!images.length || !prevBtn || !nextBtn || !counter) return;
+
+        let currentIndex = 0;
+        const totalSlides = images.length;
+
+        function updateSlider() {
+            images.forEach((img, index) => {
+                img.classList.toggle('active', index === currentIndex);
+            });
+            counter.textContent = `${currentIndex + 1} of ${totalSlides}`;
+        }
+
+        updateSlider(); // Сразу показываем "1 of N"
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSlider();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        });
+    });
 });
 
-modal.addEventListener('click', (e) => {
-    if (e.target.closest('.video-modal__close') || e.target.classList.contains('video-modal__overlay')) {
-        modal.classList.remove('is-open');
-        container.innerHTML = '';
-        document.body.classList.remove('no-scroll');
-    }
-});
-
-/* ---------- Слайдер отзывов (swiper) ---------- */
+/* ---------- Слайдер отзывов (Swiper-кастомный) ---------- */
 document.addEventListener('DOMContentLoaded', () => {
     const swiperItemsContainer = document.querySelector('.swiper__items');
     const swiperItems = document.querySelectorAll('.swiper__item');
@@ -52,22 +112,18 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
     const totalSlides = swiperItems.length;
 
-    /* --- Автоматический подсчёт количества видимых слайдов --- */
-    function getVisibleCount() {
-        const viewportWidth = swiperItemsContainer.parentElement.getBoundingClientRect().width;
-        const itemWidth = swiperItems[0].getBoundingClientRect().width;
-        const gap = parseFloat(getComputedStyle(swiperItemsContainer).gap) || 0;
-
-        // Формула: сколько карточек + отступов влезает в ширину окна
-        return Math.max(1, Math.round((viewportWidth + gap) / (itemWidth + gap)));
-    }
-
-    /* --- Автоматический подсчёт gap --- */
     function getGap() {
         return parseFloat(getComputedStyle(swiperItemsContainer).gap) || 0;
     }
 
-    /* --- Генерируем точки пагинации --- */
+    function getVisibleCount() {
+        const viewportWidth = swiperItemsContainer.parentElement.getBoundingClientRect().width;
+        const itemWidth = swiperItems[0].getBoundingClientRect().width;
+        const gap = getGap();
+        return Math.max(1, Math.round((viewportWidth + gap) / (itemWidth + gap)));
+    }
+
+    // Генерируем точки пагинации
     pagination.innerHTML = '';
     swiperItems.forEach((_, i) => {
         const dot = document.createElement('span');
@@ -84,29 +140,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const dots = pagination.querySelectorAll('.swiper__nav-dot');
 
-    /* --- Функция обновления --- */
     function updateSlider() {
-        const visibleSlides = getVisibleCount(); // <-- динамически
-
-        // Сдвиг дорожки
+        const visibleSlides = getVisibleCount();
         const shiftIndex = Math.max(0, currentIndex - (visibleSlides - 1));
         const itemWidth = swiperItems[0].getBoundingClientRect().width;
-        const gap = getGap(); // <-- автоматический gap
+        const gap = getGap();
 
         swiperItemsContainer.style.transform =
             `translateX(-${shiftIndex * (itemWidth + gap)}px)`;
 
-        // Активная карточка
         swiperItems.forEach((item, i) => {
             item.classList.toggle('swiper__active', i === currentIndex);
         });
 
-        // Активная точка пагинации
         dots.forEach((dot, i) => {
             dot.classList.toggle('swiper__nav-dot--active', i === currentIndex);
         });
 
-        // Кнопки
         const isAtStart = currentIndex === 0;
         const isAtEnd = currentIndex === totalSlides - 1;
 
@@ -133,9 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // При ресайзе — пересчитываем и обновляем
     window.addEventListener('resize', () => {
-        // Если карточки стали шире и currentIndex "улетел" за пределы — корректируем
         const visibleSlides = getVisibleCount();
         const maxIndex = totalSlides - visibleSlides;
         if (currentIndex > maxIndex) {
@@ -143,18 +191,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         updateSlider();
     });
-});
-
-nextBtn.addEventListener('click', () => {
-    if (currentIndex < totalSlides - 1) {
-        currentIndex++;
-        updateSlider();
-    }
-});
-
-prevBtn.addEventListener('click', () => {
-    if (currentIndex > 0) {
-        currentIndex--;
-        updateSlider();
-    }
 });

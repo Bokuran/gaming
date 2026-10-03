@@ -11,7 +11,8 @@
 
 // pages
 @use 'pages/about';
-@use'pages/services';
+@use 'pages/services';
+@use 'pages/news';
 
 body {
     font-family: "Poppins", sans-serif;
@@ -259,6 +260,10 @@ body {
 
 .subscribe {
     margin-bottom: 163px;
+
+    @include respond-to('large') {
+        margin-bottom: 50px;
+    }
 
     &__title {
         font-size: 30px;

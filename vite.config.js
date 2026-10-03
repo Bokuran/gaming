@@ -9,6 +9,7 @@ export default defineConfig({
         main: path.resolve(__dirname, 'index.html'),
         about: path.resolve(__dirname, 'about.html'),
         services: path.resolve(__dirname, 'services.html'),
+        news: path.resolve(__dirname, 'news.html')
       },
     },
   },
