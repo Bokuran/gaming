@@ -1,0 +1,206 @@
+@use '../abstracts' as *;
+
+.contact {
+    padding-top: 100px;
+
+    &__top {
+        text-align: center;
+    }
+
+    &__top-title {
+        font-size: 33px;
+        font-weight: 600;
+        margin-bottom: 22px;
+    }
+
+    &__top-text {
+        font-weight: 500;
+        margin-bottom: 93px;
+    }
+
+    &__content {
+        margin-bottom: 147px;
+    }
+
+    &__content-map {
+        display: block;
+        width: 100%;
+        max-width: 1060px;
+        margin: 0 auto 62px auto;
+    }
+
+    &__items {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @include respond-to('medium') {
+            flex-wrap: wrap;
+            gap: 50px;
+            justify-content: center;
+        }
+    }
+
+    &__item {
+        align-items: center;
+        gap: 20px;
+        padding-left: 20px;
+
+        @include respond-to('medium') {
+            padding-left: 10px;
+        }
+
+        &:not(:first-child) {
+            display: flex;
+        }
+
+        &:not(:last-child) {
+            border-right: 1px solid $color-white;
+            padding: 0 97px 0 20px;
+            height: 102px;
+
+            @include respond-to('medium') {
+                padding: 0 20px 0 10px;
+                height: 80px;
+                border: none;
+            }
+        }
+    }
+
+    &__item-ico {
+        display: flex;
+        gap: 16px;
+    }
+
+    &__item-wrapper {
+        position: relative;
+        width: 34px;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #1C140F;
+        border-radius: 50%;
+
+        @include icon__decor-white;
+    }
+
+    &__item-title {
+        margin-bottom: 20px;
+    }
+
+    &__item-phone,
+    &__item-place {
+        font-size: 20px;
+        font-weight: 300;
+
+        @include respond-to('medium') {
+            font-size: 15px;
+        }
+    }
+
+    &__form {
+        background-color: #1C140F;
+        position: relative;
+        z-index: 1;
+        padding-bottom: 63px;
+    }
+
+    &__form-decor-top {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: -1;
+    }
+
+    &__form-decor-bottom {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        max-width: 467px;
+        width: 100%;
+        @include respond-to('xlarge') {
+            max-width: 400px;
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 150px;
+    }
+
+    &__form-top {
+        text-align: center;
+        margin-bottom: 79px;
+        padding-top: 54px;
+    }
+
+    &__form-title {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    &__form-text {
+        font-weight: 500;
+    }
+
+    &__field-top {
+        display: flex;
+        gap: 27px;
+    }
+
+    &__field {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        margin-bottom: 20px;
+    }
+
+    &__label {
+        font-size: 14px;
+        color: #6c6c6c;
+        font-family: inherit;
+    }
+
+    &__input {
+        width: 100%;
+        padding: 15px 20px;
+        background-color: rgba(255, 255, 255, 7%);
+        border: 1px solid #CECECE;
+        border-radius: 9px;
+        color: $color-white;
+        font-size: 16px;
+        font-family: inherit;
+        outline: none;
+        transition: border-color 0.3s ease;
+
+        &:focus {
+            border-color: $color-orange;
+        }
+
+        &--textarea {
+            min-height: 180px;
+            resize: vertical;
+            padding-top: 15px;
+        }
+    }
+
+    &__submit {
+        display: flex;
+        margin-left: auto;
+        margin-top: 50px;
+        padding: 25px 47px;
+        background-color: $color-orange;
+        color: $color-white;
+        border: none;
+        border-radius: 10px;
+        transition: filter 0.3s ease;
+
+        &:hover {
+            filter: brightness(1.15);
+        }
+    }
+
+}

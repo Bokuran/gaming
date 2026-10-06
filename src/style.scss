@@ -13,6 +13,7 @@
 @use 'pages/about';
 @use 'pages/services';
 @use 'pages/news';
+@use 'pages/contact-us';
 
 body {
     font-family: "Poppins", sans-serif;
@@ -186,8 +187,10 @@ body {
         flex-wrap: wrap;
 
         @include respond-to('large') {
-            gap: 50px;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px 10px;
+            text-align: center;
         }
     }
 
@@ -196,6 +199,13 @@ body {
         flex-direction: column;
         align-items: center;
         gap: 30px;
+        height: 195px;
+    }
+
+    &__item-ico {
+        @include respond-to('large') {
+            margin-top: auto;
+        }
     }
 
     &__item-wrapper {
@@ -205,6 +215,8 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
+        background-color: $color-white;
+        border-radius: 50%;
 
         @include icon__decor-white;
     }
@@ -246,6 +258,13 @@ body {
         flex-wrap: wrap;
         gap: 33px 27px;
         margin-bottom: 72px;
+
+        @include respond-to('xlarge') {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            justify-items: center;
+            align-items: center;
+        }
     }
 
     &__content-img {
