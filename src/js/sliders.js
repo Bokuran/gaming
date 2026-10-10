@@ -1,81 +1,5 @@
-import './style.scss';
-
-/**
- * Main application initialization
- */
-document.addEventListener('DOMContentLoaded', () => {
-    initActiveMenu();
-    initBurgerMenu();
-    initVideoModal();
-    initSimpleSliders();
-    initReviewsSwiper();
-});
-
-/* ---------- Активное меню ---------- */
-function initActiveMenu() {
-    const menuLinks = document.querySelectorAll('.menu__link');
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-
-    menuLinks.forEach(link => {
-        const linkPage = link.getAttribute('href')?.split('/').pop();
-        const menuItem = link.closest('.menu__item');
-
-        if (menuItem) {
-            menuItem.classList.toggle('active', linkPage === currentPage);
-        }
-    });
-}
-
-/* ---------- Меню (бургер) ---------- */
-function initBurgerMenu() {
-    const menuBtn = document.querySelector('.menu__btn');
-    const menu = document.querySelector('.menu__list');
-
-    if (menuBtn && menu) {
-        menuBtn.addEventListener('click', () => {
-            menu.classList.toggle('open');
-        });
-    }
-}
-
-/* ---------- Видео-модалка ---------- */
-function initVideoModal() {
-    const preview = document.getElementById('videoPreview');
-    const modal = document.getElementById('videoModal');
-    const container = document.getElementById('videoContainer');
-
-    if (!preview || !modal || !container) return;
-
-    preview.addEventListener('click', () => {
-        // Получаем ID видео из data-атрибута или используем значение по умолчанию
-        const videoId = preview.dataset.videoId || 'm_nlLmWRj_k';
-
-        const iframe = document.createElement('iframe');
-        iframe.width = '100%';
-        iframe.height = '100%';
-        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-        iframe.frameBorder = '0';
-        iframe.allow = 'autoplay; encrypted-media';
-        iframe.allowFullscreen = true;
-
-        container.innerHTML = ''; // Очистка
-        container.appendChild(iframe);
-
-        modal.classList.add('is-open');
-        document.body.classList.add('no-scroll');
-    });
-
-    modal.addEventListener('click', (e) => {
-        if (e.target.closest('.video-modal__close') || e.target.classList.contains('video-modal__overlay')) {
-            modal.classList.remove('is-open');
-            container.innerHTML = '';
-            document.body.classList.remove('no-scroll');
-        }
-    });
-}
-
 /* ---------- Простой слайдер (About us) ---------- */
-function initSimpleSliders() {
+export function initSimpleSliders() {
     const sliders = document.querySelectorAll('.slider');
 
     sliders.forEach(slider => {
@@ -111,7 +35,7 @@ function initSimpleSliders() {
 }
 
 /* ---------- Слайдер отзывов (Оптимизированный) ---------- */
-function initReviewsSwiper() {
+export function initReviewsSwiper() {
     const swiperItemsContainer = document.querySelector('.swiper__items');
     const swiperItems = document.querySelectorAll('.swiper__item');
     const navButtons = document.querySelectorAll('.swiper__nav-buttons .swiper__nav-btn-wrapper');
@@ -195,14 +119,18 @@ function initReviewsSwiper() {
         }
     });
 
+    let resizeTimeout;
     window.addEventListener('resize', () => {
-        cacheDimensions();
-        const { visibleCount } = cachedDimensions;
-        const maxIndex = totalSlides - visibleCount;
-        if (currentIndex > maxIndex) {
-            currentIndex = Math.max(0, maxIndex);
-        }
-        updateSlider();
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            cacheDimensions();
+            const { visibleCount } = cachedDimensions;
+            const maxIndex = totalSlides - visibleCount;
+            if (currentIndex > maxIndex) {
+                currentIndex = Math.max(0, maxIndex);
+            }
+            updateSlider();
+        }, 150); // Пересчет через 150мс после окончания ресайза
     });
 
     // Первичная настройка

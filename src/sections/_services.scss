@@ -69,6 +69,8 @@
         height: 55px;
         align-items: center;
         justify-content: center;
+        background-color: $color-white;
+        border-radius: 50%;
 
         @include icon__decor-white;
 

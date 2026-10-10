@@ -10,10 +10,10 @@
 @use 'base/reset';
 
 // pages
-@use 'pages/about';
-@use 'pages/services';
-@use 'pages/news';
-@use 'pages/contact-us';
+@use 'sections/about';
+@use 'sections/services';
+@use 'sections/news';
+@use 'sections/contact-us';
 
 body {
     font-family: "Poppins", sans-serif;
