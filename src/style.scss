@@ -66,14 +66,17 @@ body {
     }
 
     &__items {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
         gap: 47px;
-        justify-content: space-between;
-        flex-wrap: wrap;
 
         @include respond-to('large') {
-            gap: 20px;
-            justify-content: center;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include respond-to('medium') {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
         }
     }
 

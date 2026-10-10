@@ -54,6 +54,7 @@
         color: $color-white;
         font-size: 14px;
         font-family: inherit;
+        max-width: 200px;
     }
 
     &__btn {
@@ -73,6 +74,9 @@
     }
 
     &__counter {
+        text-align: center;
+        width: 60px;
+        text-wrap: nowrap;
         user-select: none;
     }
 }

@@ -79,7 +79,6 @@
     &__left {
         display: flex;
         flex-direction: column;
-        gap: 90px;
 
         @include respond-to('large') {
             display: flex;
@@ -89,16 +88,12 @@
         }
     }
 
-    &__link-big {
-        &:not(:last-child) {
-            padding-bottom: 90px;
-            border-bottom: 1px solid #A5A5A5;
-        }
+    &__link-big {}
 
-        @include respond-to('large') {
-            border-bottom: 1px solid #A5A5A5;
-
-        }
+    &__left-decor {
+        display: block;
+        border: 1px solid #A5A5A5;
+        margin: 90px 0 90px 0;
     }
 
     &__big {
